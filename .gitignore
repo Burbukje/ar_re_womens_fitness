@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# env files
+.env
+.env.local
+
+# Python
+venv/
+**/venv/
+__pycache__/
+*.pyc
+
+# Django
+staticfiles/
+media/
+db.sqlite3
+
+# Node / Next
+node_modules/
+.next/
+out/

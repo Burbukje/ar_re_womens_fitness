@@ -1,0 +1,27 @@
+import "./globals.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import type { Metadata } from "next";
+import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Ar-Re Women's Fitness",
+  description: "Fitness studio website built with Next.js and Django.",
+  icons: {
+    icon: "/logo.png",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en">
+      <body>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  );
+}
