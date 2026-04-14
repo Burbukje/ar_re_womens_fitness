@@ -31,7 +31,7 @@ export interface HeroImage {
 export interface SiteContent {
   studio_name: string;
   hero_title: string;
-  hero_image: HeroImage;
+  hero_image?: HeroImage;
   hero_subtitle: string;
   home_intro: string;
   about_title: string;

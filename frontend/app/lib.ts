@@ -17,55 +17,8 @@ const fallbackData: SiteContent = {
   contact_phone: "+389 71 742 874",
   contact_address: "Rr. Kiro Kistoski DRNC nr. 39, Tetovo",
   opening_hours: "Mon-Fri: 10:00 - 22:00 | Sat: 12:00 - 18:00",
-  features: [
-    // {
-    //   id: 1,
-    //   title: "Small Group Training",
-    //   description:
-    //     "Build strength and confidence in a supportive group environment.",
-    //   order: 1,
-    // },
-    // {
-    //   id: 2,
-    //   title: "Personal Coaching",
-    //   description:
-    //     "Get tailored coaching based on your goals, pace, and fitness level.",
-    //   order: 2,
-    // },
-    // {
-    //   id: 3,
-    //   title: "Recovery & Mobility",
-    //   description:
-    //     "Improve movement quality and feel better inside and outside the studio.",
-    //   order: 3,
-    // },
-  ],
-  classes: [
-    // {
-    //   id: 1,
-    //   name: "Strength Foundations",
-    //   description:
-    //     "A beginner-friendly class focused on technique and total-body strength.",
-    //   schedule: "Mondays & Wednesdays · 6:00 PM",
-    //   order: 1,
-    // },
-    // {
-    //   id: 2,
-    //   name: "Core & Conditioning",
-    //   description:
-    //     "A low-impact conditioning session to boost energy and endurance.",
-    //   schedule: "Tuesdays · 6:30 PM",
-    //   order: 2,
-    // },
-    // {
-    //   id: 3,
-    //   name: "Mobility Flow",
-    //   description:
-    //     "Stretch, reset, and improve flexibility with guided mobility work.",
-    //   schedule: "Saturdays · 9:00 AM",
-    //   order: 3,
-    // },
-  ],
+  features: [],
+  classes: [],
 };
 
 export async function getSiteContent(): Promise<SiteContent> {
