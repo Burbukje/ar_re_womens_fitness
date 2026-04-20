@@ -9,8 +9,11 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ========================= SECURITY =========================
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "dev-only-secret-key")
-DEBUG = os.getenv("DEBUG", "False") == "True"
+SECRET_KEY = os.getenv("SECRET_KEY")
+
+if not SECRET_KEY:
+    raise Exception("SECRET_KEY not set")
+DEBUG = os.getenv("DEBUG", "True").lower() == "true"
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
