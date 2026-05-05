@@ -101,8 +101,13 @@ else:
 # ========================= CORS / CSRF =========================
 FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 
-CORS_ALLOWED_ORIGINS = [FRONTEND_URL]
-CSRF_TRUSTED_ORIGINS = [FRONTEND_URL]
+CORS_ALLOWED_ORIGINS = [
+    FRONTEND_URL,
+    "https://www.ar-re-fit.com",
+    "https://ar-re-fit.com",
+]
+CSRF_TRUSTED_ORIGINS = [FRONTEND_URL, "https://www.ar-re-fit.com",
+    "https://ar-re-fit.com",]
 
 if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
