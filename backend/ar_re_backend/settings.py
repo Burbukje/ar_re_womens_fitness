@@ -106,11 +106,28 @@ CORS_ALLOWED_ORIGINS = [
     "https://www.ar-re-fit.com",
     "https://ar-re-fit.com",
 ]
-CSRF_TRUSTED_ORIGINS = [FRONTEND_URL, "https://www.ar-re-fit.com",
-    "https://ar-re-fit.com",]
+
+CSRF_TRUSTED_ORIGINS = [
+    FRONTEND_URL,
+    "https://www.ar-re-fit.com",
+    "https://ar-re-fit.com",
+]
 
 if DEBUG:
-    CORS_ALLOW_ALL_ORIGINS = True
+    if DEBUG:
+        ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+        FRONTEND_URL = "http://localhost:3000"
+    else:
+        ALLOWED_HOSTS = os.getenv(
+            "ALLOWED_HOSTS",
+            "ar-re-womens-fitness-1.onrender.com"
+        ).split(",")
+
+        FRONTEND_URL = os.getenv(
+            "FRONTEND_URL",
+            "https://www.ar-re-fit.com"
+        )
+        CORS_ALLOW_ALL_ORIGINS = True
 
 # ========================= STATIC & MEDIA FILES =========================
 STATIC_URL = "static/"
@@ -158,16 +175,3 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", EMAIL_HOST_USER)
-
-# if os.environ.get("DJANGO_SUPERUSER_USERNAME"):
-#     User = get_user_model()
-#     username = os.environ.get("DJANGO_SUPERUSER_USERNAME")
-#     email = os.environ.get("DJANGO_SUPERUSER_EMAIL")
-#     password = os.environ.get("DJANGO_SUPERUSER_PASSWORD")
-
-#     if not User.objects.filter(username=username).exists():
-#         User.objects.create_superuser(
-#             username=username,
-#             email=email,
-#             password=password,
-#         )
