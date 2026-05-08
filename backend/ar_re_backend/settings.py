@@ -14,7 +14,6 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 if not SECRET_KEY:
     raise Exception("SECRET_KEY not set")
 DEBUG = os.getenv("DEBUG", "True").lower() == "true"
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 DATABASE_URL = os.environ.get("DATABASE_URL")
 if DATABASE_URL:
     url = urlparse(DATABASE_URL)
@@ -68,7 +67,6 @@ ALLOWED_HOSTS = os.getenv(
     "127.0.0.1,localhost,ar-re-womens-fitness-1.onrender.com,ar-re-fit.com,www.ar-re-fit.com"
 ).split(",")
 
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 
 # ========================= SECURITY SETTINGS =========================
 if DEBUG:
@@ -86,6 +84,23 @@ else:
 # ========================= CORS / CSRF =========================
 FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 
+if DEBUG:
+    ALLOWED_HOSTS = [
+        "127.0.0.1",
+        "localhost",
+        "ar-re-womens-fitness-1.onrender.com",
+    ]
+    FRONTEND_URL = "http://localhost:3000"
+else:
+    ALLOWED_HOSTS = os.getenv(
+        "ALLOWED_HOSTS",
+        "ar-re-womens-fitness-1.onrender.com,ar-re-fit.com,www.ar-re-fit.com"
+    ).split(",")
+
+    FRONTEND_URL = os.getenv(
+        "FRONTEND_URL",
+        "https://www.ar-re-fit.com"
+    )
 CORS_ALLOWED_ORIGINS = [
     FRONTEND_URL,
     "https://www.ar-re-fit.com",
@@ -97,22 +112,6 @@ CSRF_TRUSTED_ORIGINS = [
     "https://www.ar-re-fit.com",
     "https://ar-re-fit.com",
 ]
-
-if DEBUG:
-    if DEBUG:
-        ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
-        FRONTEND_URL = "http://localhost:3000"
-    else:
-        ALLOWED_HOSTS = os.getenv(
-            "ALLOWED_HOSTS",
-            "ar-re-womens-fitness-1.onrender.com"
-        ).split(",")
-
-        FRONTEND_URL = os.getenv(
-            "FRONTEND_URL",
-            "https://www.ar-re-fit.com"
-        )
-        CORS_ALLOW_ALL_ORIGINS = True
 
 # ========================= STATIC & MEDIA FILES =========================
 STATIC_URL = "static/"
