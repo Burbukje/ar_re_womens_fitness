@@ -10,5 +10,4 @@ urlpatterns = [
     # path('media/', include('django.contrib.staticfiles.urls')) if settings.DEBUG else [],
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
